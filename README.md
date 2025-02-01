@@ -36,12 +36,7 @@ Este é um projeto desenvolvido para consolidar conhecimentos em **Spring Boot**
 5. Acesse a documentação da API no navegador:
    ```bash  
    http://localhost:8080/swagger-ui.html  
-   ```  
-
+   ```
+   
 ## 📖 Aprendizados
 Este projeto foi desenvolvido para aplicar e reforçar conceitos aprendidos em **Spring Boot**, **JPA**, **DTOs**, **boas práticas de desenvolvimento** e **documentação de APIs**.
-
----  
-
-📌 _Projeto criado por [Seu Nome]._  
-
