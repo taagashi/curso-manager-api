@@ -18,10 +18,30 @@ Este é um projeto desenvolvido para consolidar conhecimentos em **Spring Boot**
 
 ## 🛠 Como Executar
 1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/curso-manager-api.git
-
+   ```bash  
+   git clone https://github.com/seu-usuario/curso-manager-api.git  
+   ```  
+2. Acesse o diretório do projeto:
+   ```bash  
+   cd curso-manager-api  
+   ```  
+3. Configure as dependências do projeto:
+   ```bash  
+   mvn clean install  
+   ```  
+4. Execute a aplicação:
+   ```bash  
+   ./mvnw spring-boot:run  
+   ```  
+5. Acesse a documentação da API no navegador:
+   ```bash  
+   http://localhost:8080/swagger-ui.html  
+   ```  
 
 ## 📖 Aprendizados
-- Este projeto foi desenvolvido para aplicar e reforçar conceitos aprendidos em Spring Boot, JPA, DTOs, boas práticas de desenvolvimento e documentação de APIs.
+Este projeto foi desenvolvido para aplicar e reforçar conceitos aprendidos em **Spring Boot**, **JPA**, **DTOs**, **boas práticas de desenvolvimento** e **documentação de APIs**.
+
+---  
+
+📌 _Projeto criado por [Seu Nome]._  
 
