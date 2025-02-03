@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
-@Tag(name = "cursos", description = "api de gerenciamento de cursos")
+@Tag(name = "cursos", description = "controller de gerenciamento de cursos")
 @RestController
 @RequestMapping("/curso")
 public class CursoController {
