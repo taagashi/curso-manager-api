@@ -48,4 +48,10 @@ public class ProfessorController {
     {
         return ResponseEntity.ok(professorService.exibirProfessores(pageable));
     }
+
+    @PutMapping("/troca/{id}")
+    public ResponseEntity<ProfessorResponseDto> trocarProfessor(@PathVariable Long id, @RequestBody ProfessorRequestDto professorRequestDto)
+    {
+        return ResponseEntity.ok(professorService.trocarProfessor(id, professorRequestDto));
+    }
 }
