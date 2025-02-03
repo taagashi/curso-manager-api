@@ -41,6 +41,10 @@ public class ProfessorController {
     }
 
     @GetMapping("/exibir")
+    @Operation(summary = "Exibir professores", description = "Exibe os professores atraves de paginacao", responses = {
+                @ApiResponse(responseCode = "200", description = "exibicao realiada com sucesso"),
+                @ApiResponse(responseCode = "400", description = "erro ao tentar exibir professores")
+    })
     public ResponseEntity<Pagina<ProfessorResponseDto>> exibirProfessores(@ParameterObject @PageableDefault(size = 2)Pageable pageable)
     {
         return ResponseEntity.ok(professorService.exibirProfessores(pageable));

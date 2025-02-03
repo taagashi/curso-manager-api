@@ -3,12 +3,14 @@ package br.com.thaua.ProfessorAluno.service;
 import br.com.thaua.ProfessorAluno.converter.MapperDtoEntity;
 import br.com.thaua.ProfessorAluno.dtos.CursoRequestDto;
 import br.com.thaua.ProfessorAluno.dtos.CursoResponseDto;
-import br.com.thaua.ProfessorAluno.dtos.ProfessorResponseDto;
 import br.com.thaua.ProfessorAluno.entity.CursoEntity;
 import br.com.thaua.ProfessorAluno.entity.ProfessorEntity;
+import br.com.thaua.ProfessorAluno.paginacao.Pagina;
 import br.com.thaua.ProfessorAluno.repository.CursoRepository;
 import br.com.thaua.ProfessorAluno.repository.ProfessorRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,5 +39,11 @@ public class CursoService {
     {
         CursoEntity cursoEntity = cursoRepository.findById(id).orElse(null);
         return MapperDtoEntity.INSTANCE.cursoEntityToCursoResponseDto(cursoEntity);
+    }
+
+    public Pagina<CursoResponseDto> exibirCursos(Pageable pageable)
+    {
+        Page<CursoResponseDto> cursoResponseDtoPage = cursoRepository.findAll(pageable).map(MapperDtoEntity.INSTANCE::cursoEntityToCursoResponseDto);
+        return new Pagina<>(cursoResponseDtoPage);
     }
 }
