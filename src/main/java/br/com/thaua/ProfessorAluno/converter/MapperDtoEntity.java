@@ -1,19 +1,19 @@
 package br.com.thaua.ProfessorAluno.converter;
 
-import br.com.thaua.ProfessorAluno.dtos.CursoRequestDto;
-import br.com.thaua.ProfessorAluno.dtos.CursoResponseDto;
-import br.com.thaua.ProfessorAluno.dtos.ProfessorRequestDto;
-import br.com.thaua.ProfessorAluno.dtos.ProfessorResponseDto;
+import br.com.thaua.ProfessorAluno.dtos.*;
 import br.com.thaua.ProfessorAluno.entity.CursoEntity;
 import br.com.thaua.ProfessorAluno.entity.ProfessorEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface MapperDtoEntity {
     MapperDtoEntity INSTANCE = Mappers.getMapper(MapperDtoEntity.class);
 
+    @Mapping(target = "nomeDocente", expression = "java(cursoEntity.getDocente().getNome())")
     CursoResponseDto cursoEntityToCursoResponseDto(CursoEntity cursoEntity);
+    CursoResponseSemProfDto CursoEntityToCursoResponseSemProfDto(CursoEntity cursoEntity);
     CursoRequestDto cursoEntityToCursoRequestDto(CursoEntity cursoEntity);
 
     ProfessorResponseDto professorEntityToProfessorResponseDto(ProfessorEntity professorEntity);

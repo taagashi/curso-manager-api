@@ -11,6 +11,6 @@ public class ProfessorResponseDto{
     private Long id;
     private String nome;
     private Integer idade;
-    private List<CursoResponseDto> cursos;
+    private List<CursoResponseSemProfDto> cursos;
 
 }

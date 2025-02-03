@@ -1,14 +1,16 @@
 package br.com.thaua.ProfessorAluno.dtos;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CursoResponseDto {
+public class CursoResponseSemProfDto {
     private Long id;
     private String nome;
     private Integer quantidadeHoras;
-    private String nomeDocente;
 }
