@@ -49,4 +49,14 @@ public class CursoController {
     {
         return ResponseEntity.ok(cursoService.exibirCursos(pageable));
     }
+
+    @PutMapping("/troca/{id}")
+    @Operation(summary = "troca de cursos", description = "realiza a troca de curso passando o id do curso que vai ser trocado e o novo curso que vai ocupusar seu lugar", responses = {
+                @ApiResponse(responseCode = "200", description = "cursos trocados com sucesso"),
+                @ApiResponse(responseCode = "400", description = "ocorreu um erro inesperado ao tentar realizar troca de cursos")
+    })
+    public ResponseEntity<CursoResponseDto> trocarCurso(@PathVariable Long id, @RequestBody CursoRequestDto cursoRequestDto)
+    {
+        return ResponseEntity.ok(cursoService.trocarCurso(id, cursoRequestDto));
+    }
 }

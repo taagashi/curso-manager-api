@@ -23,7 +23,7 @@ public class CursoService {
     {
         ProfessorEntity professorEntity = professorRepository.findById(cursoRequestDto.getIdDocente()).orElse(null);
 
-        if(professorEntity == null) {return null;}
+        if(professorEntity == null){return null;}
 
         CursoEntity cursoEntity = MapperDtoEntity.INSTANCE.toCursoEntity(cursoRequestDto);
         cursoEntity.setDocente(professorEntity);
@@ -45,5 +45,23 @@ public class CursoService {
     {
         Page<CursoResponseDto> cursoResponseDtoPage = cursoRepository.findAll(pageable).map(MapperDtoEntity.INSTANCE::cursoEntityToCursoResponseDto);
         return new Pagina<>(cursoResponseDtoPage);
+    }
+
+    public CursoResponseDto trocarCurso(Long id, CursoRequestDto cursoRequestDto)
+    {
+        CursoEntity cursoDeletado = cursoRepository.findById(id).orElse(null);
+
+        if(cursoDeletado == null){return null;}
+
+        cursoRepository.delete(cursoDeletado);
+
+        ProfessorEntity professorEntity = professorRepository.findById(cursoRequestDto.getIdDocente()).orElse(null);
+
+        if(professorEntity == null){return null;}
+
+        CursoEntity cursoEntity = MapperDtoEntity.INSTANCE.toCursoEntity(cursoRequestDto);
+        cursoEntity.setDocente(professorEntity);
+
+        return MapperDtoEntity.INSTANCE.cursoEntityToCursoResponseDto(cursoRepository.save(cursoEntity));
     }
 }
