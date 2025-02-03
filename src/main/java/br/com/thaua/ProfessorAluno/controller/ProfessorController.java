@@ -1,15 +1,19 @@
 package br.com.thaua.ProfessorAluno.controller;
 
-import br.com.thaua.ProfessorAluno.converter.MapperDtoEntity;
 import br.com.thaua.ProfessorAluno.dtos.ProfessorRequestDto;
 import br.com.thaua.ProfessorAluno.dtos.ProfessorResponseDto;
+import br.com.thaua.ProfessorAluno.paginacao.Pagina;
 import br.com.thaua.ProfessorAluno.service.ProfessorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Pageable;
 
 @AllArgsConstructor
 @Tag(name = "professores", description = "api de gerenciamento de professores")
@@ -34,5 +38,11 @@ public class ProfessorController {
     public ResponseEntity<ProfessorResponseDto> buscarProfessor(@PathVariable Long id)
     {
       return ResponseEntity.ok(professorService.buscarProfessorPorId(id));
+    }
+
+    @GetMapping("/exibir")
+    public ResponseEntity<Pagina<ProfessorResponseDto>> exibirProfessores(@ParameterObject @PageableDefault(size = 2)Pageable pageable)
+    {
+        return ResponseEntity.ok(professorService.exibirProfessores(pageable));
     }
 }

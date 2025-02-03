@@ -6,6 +6,7 @@ import br.com.thaua.ProfessorAluno.entity.ProfessorEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+import org.springframework.data.domain.Page;
 
 @Mapper(componentModel = "spring")
 public interface MapperDtoEntity {
